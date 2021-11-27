@@ -8,7 +8,18 @@
 
     <article>
       <header class="w3-container col-main">
-        <h1>{{ article.title }}</h1>
+        {% if article.image %}
+        <div class="headerimage-article" style="max-height: 300px;">
+          <img src="/images/{{ article.image }}" style="max-height: 300px; max-width: 100%; top: 0; z-index: -100; display: block; margin-left: auto; margin-right: auto;">
+          {% if article.imagecaption %}
+            <p class="caption">{{ article.imagecaption }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+        <h1>
+          {{ article.title }}
+        </h1>
+
         <div class="post-info">
           <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
             <span><time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}" title="All articles in category {{ article.category }}">{{ article.category }}</a></span>
@@ -26,15 +37,6 @@
       </header>
 
       <br>
-
-      {% if article.headerimage %}
-      <div class="headerimage-article">
-        <img src="{{ article.headerimage }}" style="width: 100%;">
-        {% if article.headerimagecaption %}
-          <p class="caption">{{ article.headerimagecaption }}</p>
-        {% endif %}
-      </div>
-      {% endif %}
 
       <div class="col-main w3-container">
         <section id="content">

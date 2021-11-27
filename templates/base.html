@@ -43,13 +43,13 @@
     <meta property="og:title" content="{{ SITENAME }}"/>
     <meta property="og:description" content="{{ SITESUBTITLE }}"/>
     <meta property="og:site_name" content="{{ SITENAME }}" />
-    <meta property="og:url" content="{{ SITEURL }}"/>
+    <meta property="og:url" content="{{ SITEURL }}/"/>
     <meta property="og:image" content="{{ AUTHOR_AVATAR }}"/>
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ SITENAME }}">
     <meta name="twitter:description" content="{{ SITESUBTITLE }}">
-    <meta name="twitter:url" content="{{ SITEURL }}">
+    <meta name="twitter:url" content="{{ SITEURL }}/">
     <meta name="twitter:image" content="{{ AUTHOR_AVATAR }}">
     {% endif %}
 
@@ -106,10 +106,14 @@
   <body>
     <div class="w3-row w3-card w3-white">
       <header id="header">
-        {% if " " in AUTHOR %}
-        <a href="{{ SITEURL }}" id="header-logo" title="Home">{{ AUTHOR[0] + AUTHOR[AUTHOR.index(" ")+1] }}</a>
+        {% if LOGO %}
+          <a href="{{ SITEPATH }}" title="Home"><img src="/images/{{ LOGO }}" style="max-height: 70px;"/></a>
         {% else %}
-        <a href="{{ SITEURL }}" id="header-logo" title="Home">{{ AUTHOR[0] }}</a>
+          {% if " " in AUTHOR %}
+          <a href="{{ SITEPATH }}" id="header-logo" title="Home">{{ AUTHOR[0] + AUTHOR[AUTHOR.index(" ")+1] }}</a>
+          {% else %}
+          <a href="{{ SITEPATH }}" id="header-logo" title="Home">{{ AUTHOR[0] }}</a>
+          {% endif %}
         {% endif %}
         <nav id="header-menu">
           <ul>
@@ -158,6 +162,10 @@
 
     {% if PIWIK_URL and PIWIK_SITE_ID %}
       {% include "piwik.html" %}
+    {% endif %}
+
+    {% if MATOMO_URL %}
+      {% include "matomo.html" %}
     {% endif %}
 
   </body>
