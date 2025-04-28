@@ -98,16 +98,19 @@
         <h6>Top Tags</h6>
         <ul>
           <!-- Print the four most popular tags, sorted automatically with the setting TAG_CLOUD_SORTING = 'size' in pelicanconf.py -->
+          
           {% for tag in tag_cloud[:4] %}
           <li class=""><a href="{{ SITEURL }}/{{ tag.0.url }}"> #{{ tag.0 }} ({{ tag.2 }})</a></li>
-          {% endfor %}
+          {% endfor %}          
+          
           {% for number in range(4 - tag_cloud[:4]|count) %}
           <li class="empty"></li>
           {% endfor %}
         </ul>
       </div>
     </div>
-    <div class="blogroll-block w3-col l3 m3 s6">
+    <div class="blogroll-block w3-col l3 m3 s6">      
+      -->
       <div>
           <h6><a href="{{ SITEURL }}/authors.html">Authors</a></h6>
           <ul>
