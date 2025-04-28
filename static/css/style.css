@@ -387,3 +387,17 @@ div#contact ul li {
   }
 
 }
+
+/* Additional styles for code blocks */
+code[class*="language-"] {
+  background-color: #f0f0f0;
+  padding: 10px;
+  display: block;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre;
+}
